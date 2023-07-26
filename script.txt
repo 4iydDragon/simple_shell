@@ -1,0 +1,3 @@
+pwd
+ls -a
+cat script.txt
