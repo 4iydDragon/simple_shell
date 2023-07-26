@@ -10,7 +10,6 @@
 int _history(info_t *info)
 {
 	print_list(info->history);
-	prompt();
 	return (0);
 }
 
