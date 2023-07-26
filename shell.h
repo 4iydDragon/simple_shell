@@ -140,6 +140,7 @@ int substitute_string(char **, char *);
 void prompt(void);
 
 /* customized functions */
+void custom_stderr(const char *error_msg);
 int is_executable(info_t *, char *);
 char *dup_chars(char *, int, int);
 char *find_path(info_t *, char *, char *);

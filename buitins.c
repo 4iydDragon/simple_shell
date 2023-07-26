@@ -10,6 +10,7 @@ int _cd(info_t *info)
 {
 	char *s, *dir, buffer[1024];
 	int chdir_ret;
+	char error_msg[128] = "can't cd to ";
 
 	s = getcwd(buffer, 1024);
 	if (!s)
@@ -37,8 +38,9 @@ int _cd(info_t *info)
 		chdir_ret = chdir(info->argv[1]);
 	if (chdir_ret == -1)
 	{
-		print_error(info, "can't cd to ");
-		_puts(info->argv[1]), _putchar('\n');
+		_strcat(error_msg, info->argv[1]);
+		_strcat(error_msg, "\n");
+		write(STDERR_FILENO, error_msg, _strlen(error_msg));
 	}
 	else
 	{
@@ -68,7 +70,7 @@ int _customexit(info_t *info)
 			info->status = 2;
 			_strcat(error_msg, info->argv[1]);
 			_strcat(error_msg, "\n");
-		       	write(STDERR_FILENO, error_msg, _strlen(error_msg));
+			write(STDERR_FILENO, error_msg, _strlen(error_msg));
 			return (1);
 		}
 		info->err_num = _erratoi(info->argv[1]);

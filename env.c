@@ -11,7 +11,7 @@ int _customsetenv(info_t *info)
 {
 	if (info->argc != 3)
 	{
-		_puts("Incorrect number of arguements\n");
+		custom_stderr("Incorrect number of arguements\n");
 		return (1);
 	}
 	if (_setenv(info, info->argv[1], info->argv[2]))
@@ -31,7 +31,7 @@ int _customunsetenv(info_t *info)
 
 	if (info->argc == 1)
 	{
-		_puts("Too few arguements.\n");
+		custom_stderr("Too few arguements.\n");
 		return (1);
 	}
 	for (i = 1; i <= info->argc; i++)

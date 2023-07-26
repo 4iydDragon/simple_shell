@@ -1,4 +1,12 @@
 #include "shell.h"
+/**
+ * custom_stderr -  Custom function to write error messages to stderr
+ * @error_msg: error message to be printed
+ */
+void custom_stderr(const char *error_msg)
+{
+write(STDERR_FILENO, error_msg, strlen(error_msg));
+}
 
 /**
  * get_environ - returns the string array copy of our environ
