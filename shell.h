@@ -176,7 +176,7 @@ void free_info(info_t *, int);
 
 /* my handling error functions */
 int _erratoi(char *);
-void print_error(info_t *, char *);
+void print_error(info_t *info __attribute__((unused)), const char *error_msg);
 
 
 /* my functions to handle list nodes */
