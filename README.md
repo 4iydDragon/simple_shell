@@ -1,4 +1,4 @@
-# Project README
+# Project 'SIMPLE SHELL'
 
 This README.md file provides an overview of the various files present in the project and their corresponding functions. Each section corresponds to a specific file, and the functions within that file are listed along with a brief explanation of their purposes.
 
@@ -127,10 +127,6 @@ This README.md file provides an overview of the various files present in the pro
 ## `prompt.c`
 
 - **prompt**: Function to display the shell prompt.
-
-## `script.txt`
-
-(No explanation provided as this file might contain actual script code.)
 
 ## `shell.h`
 
