@@ -45,7 +45,9 @@ typedef struct liststr
 } list_t;
 
 /**
-*@fname: the program's filename
+ *struct passinfo - contains pseudo-arguments to pass into a function,
+ *		allowing uniform prototype for function pointer struct
+ *@fname: the program's filename
  *@env: linked list local copy of environ var
  *@environ: custom modified copy of environ from  env
  *@history: the history node
@@ -56,8 +58,6 @@ typedef struct liststr
  *@cmd_buf_type: CMD_type ||, &&, ;
  *@readfd: the fd from which to read line inputs
  *@histcount: the history line number count
- *struct passinfo - contains pseudo-arguments to pass into a function,
- *		allowing uniform prototype for function pointer struct
  *@arg: a string generated from the get line containing arguments
  *@argv: an array of strings generated from the arg
  *@path: string path for the current command
@@ -99,7 +99,7 @@ typedef struct passinfo
  */
 typedef struct builtin
 {
-	char *type;
+        char *type;
         int (*func)(info_t *);
 } builtin_table;
 
