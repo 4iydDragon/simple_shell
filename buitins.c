@@ -58,6 +58,7 @@ int _cd(info_t *info)
 int _customexit(info_t *info)
 {
 	int exitcheck;
+	char error_msg[128] = "Error: Illegal number: ";
 
 	if (info->argv[1])  /* If there is an exit arguement */
 	{
@@ -65,9 +66,9 @@ int _customexit(info_t *info)
 		if (exitcheck == -1)
 		{
 			info->status = 2;
-			print_error(info, "Illegal number: ");
-			_puts(info->argv[1]);
-			_putchar('\n');
+			_strcat(error_msg, info->argv[1]);
+			_strcat(error_msg, "\n");
+		       	write(STDERR_FILENO, error_msg, _strlen(error_msg));
 			return (1);
 		}
 		info->err_num = _erratoi(info->argv[1]);
