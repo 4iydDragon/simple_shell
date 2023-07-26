@@ -28,12 +28,12 @@
 #define USE_GETLINE 0
 #define USE_STRTOK 0
 #define HIST_FILE	".simple_shell_history"
-#define HIST_MAX	4096
+#define HIST_MAX	4098
 
 extern char **environ;
 /**
- * struct liststr - singly linked list
- * @num: the number field
+ * struct liststr - singly linked lists
+ * @num: the number fields
  * @str: a string
  * @next: points to the next node
  */
@@ -45,35 +45,31 @@ typedef struct liststr
 } list_t;
 
 /**
- *struct passinfo - contains pseudo-arguements to pass into a function,
- *		allowing uniform prototype for function pointer struct
- *@arg: a string generated from getline containing arguements
- *@argv: an array of strings generated from arg
- *@path: a string path for the current command
- *@argc: the argument count
- *@line_count: the error count
- *@err_num: the error code for exit()s
- *@linecount_flag: if on count this line of input
- *@fname: the program filename
- *@env: linked list local copy of environ
- *@environ: custom modified copy of environ from LL env
+*@fname: the program's filename
+ *@env: linked list local copy of environ var
+ *@environ: custom modified copy of environ from  env
  *@history: the history node
  *@alias: the alias node
  *@env_changed: on if environ was changed
- *@status: the return status of the last exec'd command
+ *@status: the return status of the last exec'd commands
  *@cmd_buf: address of pointer to cmd_buf, on if chaining
  *@cmd_buf_type: CMD_type ||, &&, ;
- *@readfd: the fd from which to read line input
+ *@readfd: the fd from which to read line inputs
  *@histcount: the history line number count
+ *struct passinfo - contains pseudo-arguments to pass into a function,
+ *		allowing uniform prototype for function pointer struct
+ *@arg: a string generated from the get line containing arguments
+ *@argv: an array of strings generated from the arg
+ *@path: string path for the current command
+ *@argc: the argument counter
+ *@line_count: the error counter
+ *@err_num: the error code for exit status
+ *@linecount_flag: if on count this line of inputs
  */
 typedef struct passinfo
 {
 	char *arg;
-	char **argv;
-	char *path;
-	int argc;
-	unsigned int line_count;
-	int err_num;
+        int err_num;
 	int linecount_flag;
 	char *fname;
 	list_t *env;
@@ -81,9 +77,12 @@ typedef struct passinfo
 	list_t *alias;
 	char **environ;
 	int env_changed;
+	char **argv;
+	char *path;
+	int argc;
+	unsigned int line_count;
 	int status;
-
-	char **cmd_buf; /* pointer to cmd ; chain buffer, for memory mangement */
+	char **cmd_buf;
 	int cmd_buf_type; /* CMD_type ||, &&, ; */
 	int readfd;
 	int histcount;
@@ -94,17 +93,15 @@ typedef struct passinfo
 	0, 0, 0}
 
 /**
- *struct builtin - contains a builtin string and related function
+ *struct builtin - contains a builtin string and related functions
  *@type: the builtin command flag
  *@func: the function
  */
 typedef struct builtin
 {
 	char *type;
-	int (*func)(info_t *);
+        int (*func)(info_t *);
 } builtin_table;
-
-
 
 /* atoi func */
 int _interactive(info_t *);
